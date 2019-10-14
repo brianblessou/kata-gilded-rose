@@ -6,7 +6,7 @@ from item import Item
 
 class GildedRoseTest(unittest.TestCase):
 
-    items = [
+    items_day_one = [
         Item(name="+5 Dexterity Vest", sell_in=10, quality=20),
         Item(name="Aged Brie", sell_in=2, quality=0),
         Item(name="Elixir of the Mongoose", sell_in=5, quality=7),
@@ -25,7 +25,6 @@ class GildedRoseTest(unittest.TestCase):
     def qualityLoop(self,gilded_rose,days):
         for i in range(0,days):
             gilded_rose.update_quality()
-        return gilded_rose
 
 
     def test_after_1_day(self):
@@ -40,12 +39,13 @@ class GildedRoseTest(unittest.TestCase):
             Item(name="Backstage passes to a TAFKAL80ETC concert", sell_in=4, quality=50),
             Item(name="Conjured Mana Cake", sell_in=2, quality=5),
         ]
-        gilded_rose = GildedRose(self.items)
-        gilded_rose = self.qualityLoop(gilded_rose,1)
+        gilded_rose = GildedRose(self.items_day_one)
+        gilded_rose.update_quality()
+        #self.qualityLoop(gilded_rose,1)
         print("expected vs self day 1")
         print(items_expected)
         print(gilded_rose.items)
-        assert (items_expected == gilded_rose.items)
+        self.assertCountEqual (items_expected ,gilded_rose.items)
 
     def test_after_2_day(self):
         items_expected = [
@@ -60,8 +60,8 @@ class GildedRoseTest(unittest.TestCase):
             Item(name="Conjured Mana Cake", sell_in=1, quality=4),
         ]
 
-        gilded_rose = GildedRose(self.items)
-        gilded_rose = self.qualityLoop(gilded_rose,2)
+        gilded_rose = GildedRose(self.items_day_one)
+        self.qualityLoop(gilded_rose,2)
         print("expected vs self day 2")
         print(items_expected)
         print(gilded_rose.items)
@@ -81,8 +81,8 @@ class GildedRoseTest(unittest.TestCase):
         ]
 
 
-        gilded_rose = GildedRose(self.items)
-        gilded_rose = self.qualityLoop(gilded_rose,10)
+        gilded_rose = GildedRose(self.items_day_one)
+        self.qualityLoop(gilded_rose,10)
         print(items_expected)
         print(gilded_rose.items)
         self.assertCountEqual (items_expected,gilded_rose.items)
@@ -100,8 +100,8 @@ class GildedRoseTest(unittest.TestCase):
             Item(name="Conjured Mana Cake", sell_in=-17, quality=0),
         ]
 
-        gild_rose = GildedRose(self.items)
-        gild_rose = self.qualityLoop(gild_rose, 20)
+        gild_rose = GildedRose(self.items_day_one)
+        self.qualityLoop(gild_rose, 20)
         print("expected vs self day 20")
         print(items_expected)
         print(gild_rose.items)
