@@ -76,5 +76,24 @@ class GildedRoseTest {
     assertEquals(itemsExpected.toList, app.items.toList)
   }
 
+  @Test
+  def testAfterElevenDays() = {
+    val itemsExpected = Array[Item](
+      new Item("+5 Dexterity Vest", -1, 8),
+      new Item("Aged Brie", -9, 20),
+      new Item("Elixir of the Mongoose", -6, 0),
+      new Item("Sulfuras, Hand of Ragnaros",0,80),
+      new Item("Sulfuras, Hand of Ragnaros",-1,80),
+      new Item("Backstage passes to a TAFKAL80ETC concert",4,38),
+      new Item("Backstage passes to a TAFKAL80ETC concert",-1,0),
+      new Item("Backstage passes to a TAFKAL80ETC concert",-6,0),
+      new Item("Conjured Mana Cake",-8,0)
+    )
+    for (i <- 1 to 11) {
+      app.updateQuality()
+    }
+    assertEquals(itemsExpected.toList, app.items.toList)
+  }
+
 
 }
