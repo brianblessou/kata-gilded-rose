@@ -47,6 +47,7 @@ class GildedRose(val items: Array[Item]) {
         print(" ")
       }
       else {
+        item.sellIn = item.sellIn - 1
 
 
         if (isBackstage(item)) {
@@ -57,11 +58,11 @@ class GildedRose(val items: Array[Item]) {
 
             if (isBackstage(item)) {
               if (item.quality < 50) {
-                if (item.sellIn < 11) {
+                if (item.sellIn < 10) {
                   increaseItemQuality(item, 1)
                 }
 
-                if (item.sellIn < 6) {
+                if (item.sellIn < 5) {
                   increaseItemQuality(item, 2)
                 }
                 if (item.sellIn < 0) {
@@ -78,8 +79,6 @@ class GildedRose(val items: Array[Item]) {
             increaseItemQuality(item, 1)
           }
         }
-
-
         else {
 
 
@@ -88,7 +87,7 @@ class GildedRose(val items: Array[Item]) {
           }
 
         }
-        item.sellIn = item.sellIn - 1
+
         if (item.sellIn < 0) {
 
           if (!isAgedBrie(item)) {
