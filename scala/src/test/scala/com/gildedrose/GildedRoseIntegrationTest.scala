@@ -40,43 +40,21 @@ class GildedRoseIntegrationTest {
   }
 
   @Test
-  def validityTestDay2(): Unit = {
+  def validityTestDay11(): Unit = {
     val expectedItems = Array[Item](
-      new Item("+5 Dexterity Vest", 8, 18),
-      new Item("Aged Brie", 0, 2),
-      new Item("Elixir of the Mongoose", 3, 5),
-      new Item("Sulfuras, Hand of Ragnaros", 0, 80),
-      new Item("Sulfuras, Hand of Ragnaros", -1, 80),
-      new Item("Backstage passes to a TAFKAL80ETC concert", 13, 22),
-      new Item("Backstage passes to a TAFKAL80ETC concert", 8, 50),
-      new Item("Backstage passes to a TAFKAL80ETC concert", 3, 50),
+      Item("+5 Dexterity Vest", -2, 6),
+      Item("Aged Brie", -10, 22),
+      Item("Elixir of the Mongoose", -7, 0),
+      Item("Sulfuras, Hand of Ragnaros", 0, 80),
+      Item("Sulfuras, Hand of Ragnaros", -1, 80),
+      Item("Backstage passes to a TAFKAL80ETC concert", 3, 41),
+      Item("Backstage passes to a TAFKAL80ETC concert", -2, 0),
+      Item("Backstage passes to a TAFKAL80ETC concert", -7, 0),
       // this conjured item does not work properly yet
-      new Item("Conjured Mana Cake", 1, 4)
+      Item("Conjured Mana Cake", -9, 0)
     )
 
-    for(i <- 1 to 2){
-      app.updateQuality()
-    }
-
-    assertEquals(expectedItems.toList,app.items.toList)
-  }
-
-  @Test
-  def validityTestDay3(): Unit = {
-    val expectedItems = Array[Item](
-      new Item("+5 Dexterity Vest", 7, 17),
-      new Item("Aged Brie", -1, 4),
-      new Item("Elixir of the Mongoose", 2, 4),
-      new Item("Sulfuras, Hand of Ragnaros", 0, 80),
-      new Item("Sulfuras, Hand of Ragnaros", -1, 80),
-      new Item("Backstage passes to a TAFKAL80ETC concert", 12, 23),
-      new Item("Backstage passes to a TAFKAL80ETC concert", 7, 50),
-      new Item("Backstage passes to a TAFKAL80ETC concert", 2, 50),
-      // this conjured item does not work properly yet
-      new Item("Conjured Mana Cake", 0, 3)
-    )
-
-    for(i <- 1 to 3){
+    for(i <- 1 to 12){
       app.updateQuality()
     }
 
