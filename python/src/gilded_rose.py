@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from src.item import Item
 
+from src.factory_item import FactoryItem
+
 AGED_BRIE = "Aged Brie"
 BACKSTAGE = "Backstage passes to a TAFKAL80ETC concert"
 SULFURAS = "Sulfuras, Hand of Ragnaros"
@@ -9,57 +11,18 @@ class GildedRose(object):
 
     def __init__(self, items):
         self.items = items
-
-    def _improve_quality(self, item):
-        """
-        Effect: Improve item.quality by 1 in default case
-                If item.name =  "Backstage passes to a TAFKAL80ETC concert" :
-                    If item.sell_in < 11 : item.quality + 2
-                    If item.sell_in < 6 : item.quality + 3
-        """
-        
-        item.quality = item.quality + 1
-        if item.name == BACKSTAGE:
-            if item.sell_in  < 10:
-                item.quality = item.quality + 1
-            if item.sell_in  < 5:
-                item.quality = item.quality + 1
-                        
-    def _clean_quality(self,item):
-        """
-        Check if item.quality is between 0 and 50 
-       
-        if item.quality < 0 : item.quality = 0
-        if item.quality > 50 : item.quality = 50
-        """
-        if item.quality < 0 :
-            item.quality = 0
-        elif item.quality > 50 :
-            item.quality = 50
-        
+        self.factory_item = FactoryItem()
+                                
     def update_quality(self):
         for item in self.items:
-            if  item.name == SULFURAS:
-                continue
+            itemObj = self.factory_item.product(item.name, item.sell_in, item.quality)
             
-            item.sell_in = item.sell_in - 1
+            itemObj.update()
+            item.name = itemObj.name
+            item.sell_in = itemObj.sell_in
+            item.quality = itemObj.quality
+                   
             
-            if item.name == AGED_BRIE:
-                self._improve_quality(item)
-                if item.sell_in < 0:
-                    item.quality = item.quality + 1
-                      
-            elif item.name  == BACKSTAGE:
-                self._improve_quality(item)
-                if item.sell_in < 0:
-                    item.quality = 0
-               
-            else:
-                item.quality = item.quality - 1
-                if item.sell_in < 0:
-                    item.quality = item.quality - 1
-                        
-            self._clean_quality(item)
                 
                     
 

@@ -91,27 +91,13 @@ def update_item(test_cases,nb_update):
         items_update.append(item_update)
         
     gilded_rose = GildedRose(items)
+    print("be:",items)
     for _ in range(0,nb_update):
         gilded_rose.update_quality()
+    print("af:",items)
     return items, items_update
 
-def improve_quality_item(test_cases):
-    items = []
-    items_update = []
-    gilded_rose = GildedRose(items)
-    for case in test_cases:
-        (name, sell_in, quality, sell_in_update, quality_update) = case
-        
-        item = Item(name=name, sell_in=sell_in, quality=quality)
-        item_update = Item(name=name, sell_in=sell_in_update, quality=quality_update)
-        
-        item.sell_in = item.sell_in - 1
-        gilded_rose._improve_quality(item)
-        
-        items.append(item)
-        items_update.append(item_update)
-    return items, items_update
-    
+
 
 class GildedRoseTest(unittest.TestCase):
     
@@ -135,23 +121,7 @@ class GildedRoseTest(unittest.TestCase):
         for item, item_update in zip(items,items_update):
             self.assertEqual(item, item_update)
             
-    def test_improve_quality_one_day(self):
-        items, items_update = improve_quality_item(test_cases_one_day)
-        for item, item_update in zip(items,items_update):
-            if item.name in [AGED_BRIE,BACKSTAGE] and item.quality <=50 and item.quality >=0  :
-                print(item)
-                self.assertEqual(item.quality, item_update.quality)
-            
-        
-    def test_clean_quality(self):
-        gilded_rose = GildedRose([])
-        for case in test_cases_clean_quality:
-            (name, sell_in, quality, sell_in_update, quality_update) = case
-            item = Item(name=name, sell_in=sell_in, quality=quality)
-            item_update = Item(name=name, sell_in=sell_in_update, quality=quality_update)
-            gilded_rose._clean_quality(item)
-            self.assertEqual(item.quality, item_update.quality)
-                    
+    
     
         
 if __name__ == '__main__':
