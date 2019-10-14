@@ -24,6 +24,7 @@ object TexttestFixture {
       }
       System.out.println()
       app.updateQuality()
+
     }
   }
 }
