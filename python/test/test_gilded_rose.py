@@ -97,19 +97,21 @@ def update_item(test_cases,nb_update):
         gilded_rose.update_quality()
     return items, items_update
 
-def improve_quality_item(test_cases,nb_improve):
+def improve_quality_item(test_cases):
     items = []
     items_update = []
     gilded_rose = GildedRose(items)
     for case in test_cases:
         (name, sell_in, quality, sell_in_update, quality_update) = case
+        
         item = ItemRose(name=name, sell_in=sell_in, quality=quality)
         item_update = ItemRose(name=name, sell_in=sell_in_update, quality=quality_update)
-        for _ in range(0,nb_improve):
-            gilded_rose._improve_quality(item)
+        
+        item.sell_in = item.sell_in - 1
+        gilded_rose._improve_quality(item)
+        
         items.append(item)
         items_update.append(item_update)
-        print(item," -- ",item_update)
     return items, items_update
     
 
@@ -136,18 +138,13 @@ class GildedRoseTest(unittest.TestCase):
             self.assertEqual(item, item_update)
             
     def test_improve_quality_one_day(self):
-        items, items_update = improve_quality_item(test_cases_one_day,1)
+        items, items_update = improve_quality_item(test_cases_one_day)
         for item, item_update in zip(items,items_update):
             if item.name in [AGED_BRIE,BACKSTAGE] and item.quality <=50 and item.quality >=0  :
                 print(item)
                 self.assertEqual(item.quality, item_update.quality)
-                
-    def test_improve_quality_two_day(self):
-        items, items_update = improve_quality_item(test_cases_two_day,2)
-        for item, item_update in zip(items,items_update):
-            if item.name in [AGED_BRIE,BACKSTAGE] and item.quality <=50 and item.quality >=0  :
-                print(item)
-                self.assertEqual(item.quality, item_update.quality)
+            
+        
     def test_clean_quality(self):
         gilded_rose = GildedRose([])
         for case in test_cases_clean_quality:

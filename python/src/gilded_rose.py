@@ -16,10 +16,10 @@ class GildedRose(object):
         """
         
         item.quality = item.quality + 1
-        if item.name == "Backstage passes to a TAFKAL80ETC concert":
-            if item.sell_in < 11:
+        if item.name == BACKSTAGE:
+            if item.sell_in  < 10:
                 item.quality = item.quality + 1
-            if item.sell_in < 6:
+            if item.sell_in  < 5:
                 item.quality = item.quality + 1
                         
     def _clean_quality(self,item):
@@ -39,19 +39,21 @@ class GildedRose(object):
             if  item.name == SULFURAS:
                 continue
             
-            if item.name not in [AGED_BRIE,BACKSTAGE]:
-                item.quality = item.quality - 1
-            else:
-                self._improve_quality(item)
-            
             item.sell_in = item.sell_in - 1
             
-            if item.sell_in < 0:
-                if item.name == AGED_BRIE:
+            if item.name == AGED_BRIE:
+                self._improve_quality(item)
+                if item.sell_in < 0:
                     item.quality = item.quality + 1
-                elif item.name == BACKSTAGE:
-                        item.quality = item.quality - item.quality
-                else:
+                      
+            elif item.name  == BACKSTAGE:
+                self._improve_quality(item)
+                if item.sell_in < 0:
+                    item.quality = 0
+               
+            else:
+                item.quality = item.quality - 1
+                if item.sell_in < 0:
                     item.quality = item.quality - 1
                         
             self._clean_quality(item)
