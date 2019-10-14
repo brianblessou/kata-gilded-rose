@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-
+AGED_BRIE = "Aged Brie"
+BACKSTAGE = "Backstage passes to a TAFKAL80ETC concert"
+SULFURAS = "Sulfuras, Hand of Ragnaros"
 class GildedRose(object):
 
     def __init__(self, items):
@@ -34,10 +36,10 @@ class GildedRose(object):
         
     def update_quality(self):
         for item in self.items:
-            if  item.name == "Sulfuras, Hand of Ragnaros":
+            if  item.name == SULFURAS:
                 continue
             
-            if item.name not in ["Aged Brie","Backstage passes to a TAFKAL80ETC concert"]:
+            if item.name not in [AGED_BRIE,BACKSTAGE]:
                 item.quality = item.quality - 1
             else:
                 self._improve_quality(item)
@@ -45,9 +47,9 @@ class GildedRose(object):
             item.sell_in = item.sell_in - 1
             
             if item.sell_in < 0:
-                if item.name == "Aged Brie":
+                if item.name == AGED_BRIE:
                     item.quality = item.quality + 1
-                elif item.name == "Backstage passes to a TAFKAL80ETC concert":
+                elif item.name == BACKSTAGE:
                         item.quality = item.quality - item.quality
                 else:
                     item.quality = item.quality - 1
