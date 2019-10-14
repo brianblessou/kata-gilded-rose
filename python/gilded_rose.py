@@ -1,9 +1,14 @@
-# -*- coding: utf-8 -*-
-
 class GildedRose(object):
 
     def __init__(self, items):
         self.items = items
+
+    def quality_add_1(self,item):
+        return item.quality +1
+    def quality_substract_1(self,item):
+        return item.quality -1
+    def sell_in_add_1(self,item):
+        return item.sell_in +1
 
     def update_quality(self):
         for item in self.items:
@@ -13,7 +18,7 @@ class GildedRose(object):
                         item.quality = item.quality - 1
             else:
                 if item.quality < 50:
-                    item.quality = item.quality + 1
+                    item.quality = self.quality_add_1(item)
                     if item.name == "Backstage passes to a TAFKAL80ETC concert":
                         if item.sell_in < 11:
                             if item.quality < 50:
@@ -36,11 +41,4 @@ class GildedRose(object):
                         item.quality = item.quality + 1
 
 
-class Item:
-    def __init__(self, name, sell_in, quality):
-        self.name = name
-        self.sell_in = sell_in
-        self.quality = quality
 
-    def __repr__(self):
-        return "%s, %s, %s" % (self.name, self.sell_in, self.quality)
