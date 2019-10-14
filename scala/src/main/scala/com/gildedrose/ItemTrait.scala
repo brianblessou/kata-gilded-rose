@@ -1,5 +1,5 @@
 package com.gildedrose
 
-class Item {
+trait ItemTrait {
 
 }

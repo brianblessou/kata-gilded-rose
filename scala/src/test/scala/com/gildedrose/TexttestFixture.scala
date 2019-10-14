@@ -14,7 +14,7 @@ object TexttestFixture {
       // this conjured item does not work properly yet
       new Item("Conjured Mana Cake", 3, 6)
     )
-    val app = new GildedRose(items)
+    val app = GildedRose(items)
     val days = if (args.length > 0) args(0).toInt + 1 else 2
     for (i <- 0 until days) {
       System.out.println("-------- day " + i + " --------")
