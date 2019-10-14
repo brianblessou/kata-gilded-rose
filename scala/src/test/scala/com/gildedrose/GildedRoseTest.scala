@@ -78,4 +78,40 @@ class GildedRoseTest {
     assertEquals(expectedImprovedItem, improvedItem)
   }
 
-}
+  @Test
+  def checkImprovedRegular(): Unit = {
+    val items = Array[Item](Item("Aged Brie", 2, 24))
+    val expectedImprovedItem = Item("Aged Brie", 2, 25)
+    val app = new GildedRose(items)
+    val improvedItem = app.improveRegular(items(0))
+    assertEquals(expectedImprovedItem, improvedItem)
+  }
+
+  @Test
+  def checkImprovedRegularAlreadyPerfect(): Unit = {
+    val items = Array[Item](Item("Aged Brie", 2, 50))
+    val expectedImprovedItem = Item("Aged Brie", 2, 50)
+    val app = new GildedRose(items)
+    val improvedItem = app.improveRegular(items(0))
+    assertEquals(expectedImprovedItem, improvedItem)
+  }
+
+  @Test
+  def checkDecreaseSellInSulfuras(): Unit = {
+    val items = Array[Item](Item("Sulfuras, Hand of Ragnaros", 0, 80))
+    val expectedImprovedItem = Item("Sulfuras, Hand of Ragnaros", 0, 80)
+    val app = new GildedRose(items)
+    val improvedItem = app.decreaseSellIn(items(0))
+    assertEquals(expectedImprovedItem, improvedItem)
+  }
+
+  @Test
+  def checkDecreaseSellInOthersItems(): Unit = {
+    val items = Array[Item](Item("Aged Brie", 2, 24))
+    val expectedImprovedItem = Item("Aged Brie", 1, 24)
+    val app = new GildedRose(items)
+    val improvedItem = app.decreaseSellIn(items(0))
+    assertEquals(expectedImprovedItem, improvedItem)
+  }
+
+  }
