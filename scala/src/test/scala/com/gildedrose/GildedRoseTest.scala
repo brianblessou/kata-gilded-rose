@@ -80,8 +80,8 @@ class GildedRoseTest {
 
   @Test
   def checkImprovedRegular(): Unit = {
-    val items = Array[Item](Item("Aged Brie", 2, 24))
-    val expectedImprovedItem = Item("Aged Brie", 2, 25)
+    val items = Array[Item](Item("Aged Brie", 2, 0))
+    val expectedImprovedItem = Item("Aged Brie", 2, 1)
     val app = new GildedRose(items)
     val improvedItem = app.improveRegular(items(0))
     assertEquals(expectedImprovedItem, improvedItem)
@@ -97,21 +97,48 @@ class GildedRoseTest {
   }
 
   @Test
-  def checkDecreaseSellInSulfuras(): Unit = {
-    val items = Array[Item](Item("Sulfuras, Hand of Ragnaros", 0, 80))
-    val expectedImprovedItem = Item("Sulfuras, Hand of Ragnaros", 0, 80)
+  def checkDecreaseQualityNonSulfuras(): Unit = {
+    val items = Array[Item](Item("+5 Dexterity Vest", 10, 20))
+    val expectedImprovedItem = Item("+5 Dexterity Vest", 10, 19)
     val app = new GildedRose(items)
-    val improvedItem = app.decreaseSellIn(items(0))
+    val improvedItem = app.decreaseQuality(items(0))
     assertEquals(expectedImprovedItem, improvedItem)
   }
 
   @Test
-  def checkDecreaseSellInOthersItems(): Unit = {
-    val items = Array[Item](Item("Aged Brie", 2, 24))
-    val expectedImprovedItem = Item("Aged Brie", 1, 24)
+  def checkDecreaseQualitySulfuras(): Unit = {
+    val items = Array[Item](Item("Sulfuras, Hand of Ragnaros", 0, 80))
+    val expectedImprovedItem = Item("Sulfuras, Hand of Ragnaros", 0, 80)
     val app = new GildedRose(items)
-    val improvedItem = app.decreaseSellIn(items(0))
+    val improvedItem = app.decreaseQuality(items(0))
     assertEquals(expectedImprovedItem, improvedItem)
   }
 
+  @Test
+  def checkImprovedBoostedPassRegular(): Unit = {
+    val items = Array[Item](Item("Backstage passes to a TAFKAL80ETC concert", 15, 34))
+    val expectedImprovedItem = Item("Backstage passes to a TAFKAL80ETC concert", 15, 34)
+    val app = new GildedRose(items)
+    val improvedItem = app.improveBoostedPass(items(0))
+    assertEquals(expectedImprovedItem, improvedItem)
   }
+
+  @Test
+  def checkImprovedBoostedPass6To10DaysLeft(): Unit = {
+    val items = Array[Item](Item("Backstage passes to a TAFKAL80ETC concert", 6, 34))
+    val expectedImprovedItem = Item("Backstage passes to a TAFKAL80ETC concert", 6, 35)
+    val app = new GildedRose(items)
+    val improvedItem = app.improveBoostedPass(items(0))
+    assertEquals(expectedImprovedItem, improvedItem)
+  }
+
+  @Test
+  def checkImprovedBoostedPass1To5DaysLeft(): Unit = {
+    val items = Array[Item](Item("Backstage passes to a TAFKAL80ETC concert", 3, 34))
+    val expectedImprovedItem = Item("Backstage passes to a TAFKAL80ETC concert", 3, 36)
+    val app = new GildedRose(items)
+    val improvedItem = app.improveBoostedPass(items(0))
+    assertEquals(expectedImprovedItem, improvedItem)
+  }
+
+}
