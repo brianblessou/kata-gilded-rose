@@ -4,31 +4,29 @@ class GildedRose(val items: Array[Item]) {
 
 
   def updateQuality() {
-    for (i <- 0 until items.length) {
-      if (!items(i).name.equals("Aged Brie")
-        && !items(i).name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-          decreaseQuality(items(i))
+    for (item <-  items) {
+      if (item.name.equals("Aged Brie")
+        || item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+        improveQuality(item)
       } else {
-        improveBrieOrPass(items(i))
+        decreaseQuality(item)
       }
 
-      sellInClosingIn(items(i))
+      sellInClosingIn(item)
 
-      if (items(i).sellIn < 0) {
-        postRedemptionDate(items(i))
+      if (item.sellIn < 0) {
+        postRedemptionDate(item)
       }
     }
   }
 
   def postRedemptionDate(item: Item) : Item = {
-    if (!item.name.equals("Aged Brie")) {
-      if (!item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-          decreaseQuality(item)
-      } else {
-        item.quality = 0
-      }
-    } else {
+    if (item.name.equals("Aged Brie")) {
       improveRegular(item)
+    } else if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+      item.quality = 0
+    } else {
+      decreaseQuality(item)
     }
     item
   }
@@ -53,7 +51,7 @@ class GildedRose(val items: Array[Item]) {
     item
   }
 
-  def improveBrieOrPass(item: Item): Item = {
+  def improveQuality(item: Item): Item = {
     if (item.quality < 50) {
       item.quality += 1
       improveBoostedPass(item)
