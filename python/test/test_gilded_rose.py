@@ -13,7 +13,10 @@ test_cases_one_day = [
     ("Sulfuras, Hand of Ragnaros", -1, 80, -1, 80),
     ("Backstage passes to a TAFKAL80ETC concert", 15, 20, 14, 21),
     ("Backstage passes to a TAFKAL80ETC concert", 10, 49, 9, 50),
+    ("Backstage passes to a TAFKAL80ETC concert", 10, 10, 9, 12),
     ("Backstage passes to a TAFKAL80ETC concert", 5, 49, 4, 50),
+    ("Backstage passes to a TAFKAL80ETC concert", 5, 10, 4, 13),
+    ("Backstage passes to a TAFKAL80ETC concert", 0, 49, -1, 0),
     ("Conjured Mana Cake", 3, 6, 2, 5),  # <-- :O
 ]
 
@@ -27,7 +30,10 @@ test_cases_two_day = [
     ("Sulfuras, Hand of Ragnaros", -1, 80, -1, 80),
     ("Backstage passes to a TAFKAL80ETC concert", 15, 20,  13, 22),
     ("Backstage passes to a TAFKAL80ETC concert", 10, 49, 8, 50),
+    ("Backstage passes to a TAFKAL80ETC concert", 10, 10, 8, 14),
     ("Backstage passes to a TAFKAL80ETC concert", 5, 49, 3, 50),
+    ("Backstage passes to a TAFKAL80ETC concert", 5, 10, 3, 16),
+    ("Backstage passes to a TAFKAL80ETC concert", 0, 49, -2, 0),
     ("Conjured Mana Cake", 3, 6,  1, 4),  # <-- :O
 ]
 
@@ -41,7 +47,11 @@ test_cases_five_day = [
     ("Sulfuras, Hand of Ragnaros", -1, 80, -1, 80),
     ("Backstage passes to a TAFKAL80ETC concert", 15, 20,  10, 25),
     ("Backstage passes to a TAFKAL80ETC concert", 10, 49, 5, 50),
+    ("Backstage passes to a TAFKAL80ETC concert", 10, 10, 5, 20),
+
     ("Backstage passes to a TAFKAL80ETC concert", 5, 49, 0, 50),
+    ("Backstage passes to a TAFKAL80ETC concert", 5, 10, 0, 25),
+    
     ("Conjured Mana Cake", 3, 6,  -2, 0),  # <-- :O
 ]
 
@@ -55,7 +65,9 @@ test_cases_ten_day = [
     ("Sulfuras, Hand of Ragnaros", -1, 80, -1, 80),
     ("Backstage passes to a TAFKAL80ETC concert", 15, 20,  5, 35),
     ("Backstage passes to a TAFKAL80ETC concert", 10, 49,  0, 50),
+    ("Backstage passes to a TAFKAL80ETC concert", 10, 10, 0, 35),
     ("Backstage passes to a TAFKAL80ETC concert", 5, 49, -5, 0),
+    ("Backstage passes to a TAFKAL80ETC concert", 5, 10, -5, 0),
     ("Conjured Mana Cake", 3, 6,  -7, 0),  # <-- :O
 ]
 

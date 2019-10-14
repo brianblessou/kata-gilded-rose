@@ -7,20 +7,30 @@ class GildedRose(object):
 
     def _improve_quality(self, item):
         """
-        Effect :Improve item.quality by 1 in default case
+        Effect: Improve item.quality by 1 in default case
                 If item.name =  "Backstage passes to a TAFKAL80ETC concert" :
                     If item.sell_in < 11 : item.quality + 2
                     If item.sell_in < 6 : item.quality + 3
         """
-        if item.quality < 50:
-            item.quality = item.quality + 1
-            if item.name == "Backstage passes to a TAFKAL80ETC concert":
-                if item.sell_in < 11:
-                    if item.quality < 50:
-                        item.quality = item.quality + 1
-                if item.sell_in < 6:
-                    if item.quality < 50:
-                        item.quality = item.quality + 1
+        
+        item.quality = item.quality + 1
+        if item.name == "Backstage passes to a TAFKAL80ETC concert":
+            if item.sell_in < 11:
+                item.quality = item.quality + 1
+            if item.sell_in < 6:
+                item.quality = item.quality + 1
+                        
+    def _clean_quality(self,item):
+        """
+        Check if item.quality is between 0 and 50 
+       
+        if item.quality < 0 : item.quality = 0
+        if item.quality > 50 : item.quality = 50
+        """
+        if item.quality < 0 :
+            item.quality = 0
+        elif item.quality > 50 :
+            item.quality = 50
         
     def update_quality(self):
         for item in self.items:
@@ -28,24 +38,23 @@ class GildedRose(object):
                 continue
             
             if item.name not in ["Aged Brie","Backstage passes to a TAFKAL80ETC concert"]:
-                if item.quality > 0 :
-                    item.quality = item.quality - 1
+                item.quality = item.quality - 1
             else:
                 self._improve_quality(item)
             
             item.sell_in = item.sell_in - 1
             
             if item.sell_in < 0:
-                if item.name != "Aged Brie":
-                    if item.name != "Backstage passes to a TAFKAL80ETC concert":
-                        if item.quality > 0:
-                            if item.name != "Sulfuras, Hand of Ragnaros":
-                                item.quality = item.quality - 1
-                    else:
+                if item.name == "Aged Brie":
+                    item.quality = item.quality + 1
+                elif item.name == "Backstage passes to a TAFKAL80ETC concert":
                         item.quality = item.quality - item.quality
                 else:
-                    if item.quality < 50:
-                        item.quality = item.quality + 1
+                    item.quality = item.quality - 1
+                        
+            self._clean_quality(item)
+                
+                    
 
 
 class Item:
