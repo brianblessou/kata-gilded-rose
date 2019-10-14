@@ -1,6 +1,8 @@
 package com.gildedrose
 
 class GildedRose(val items: Array[Item]) {
+  val _maxQuality = 50
+  val _minQuality = 0
 
 
   def updateQuality() {
