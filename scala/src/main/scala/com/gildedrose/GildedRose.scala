@@ -33,11 +33,44 @@ class GildedRose(val items: Array[Item]) {
     item.name == "Sulfuras, Hand of Ragnaros"
   }
 
-  def checkItemQuality(index: Int, qualityNumber: Int): Unit = {
+  def updateBrieQuality(item: Item): Unit ={
 
-
+    item.sellIn = item.sellIn - 1
+    if (item.quality < 50) {
+      increaseItemQuality(item, 1)
+      if (item.sellIn < 0) {
+        increaseItemQuality(item, 1)
+      }
+    }
   }
 
+  def updateBackstageQuality(item: Item): Unit ={
+
+    item.sellIn = item.sellIn - 1
+    if (item.quality < 50) {
+      increaseItemQuality(item, 1)
+      if (item.quality < 50) {
+        if (item.sellIn < 10) {
+          increaseItemQuality(item, 1)
+        }
+        if (item.sellIn < 5) {
+          increaseItemQuality(item, 2)
+        }
+      }
+    }
+    if (item.sellIn < 0) {
+      item.quality = item.quality - item.quality
+    }
+  }
+  def updateRegularObjectQuality(item: Item): Unit ={
+    item.sellIn = item.sellIn - 1
+    if (item.quality > 0) {
+      decreaseItemQuality(item, 1)
+      if (item.sellIn < 0) {
+        decreaseItemQuality(item, 1)
+      }
+    }
+  }
 
   def updateQuality() {
     items.foreach { item =>
@@ -47,68 +80,14 @@ class GildedRose(val items: Array[Item]) {
         print(" ")
       }
       else {
-        item.sellIn = item.sellIn - 1
-
-
         if (isBackstage(item)) {
-
-
-          if (item.quality < 50) {
-            increaseItemQuality(item, 1)
-
-            if (isBackstage(item)) {
-              if (item.quality < 50) {
-                if (item.sellIn < 10) {
-                  increaseItemQuality(item, 1)
-                }
-
-                if (item.sellIn < 5) {
-                  increaseItemQuality(item, 2)
-                }
-                if (item.sellIn < 0) {
-                  item.quality = item.quality - item.quality
-                }
-
-              }
-            }
-          }
-
+          updateBackstageQuality(item)
         }
         else if (isAgedBrie(item)) {
-          if (item.quality < 50) {
-            increaseItemQuality(item, 1)
-          }
+          updateBrieQuality(item)
         }
         else {
-
-
-          if (item.quality > 0) {
-            decreaseItemQuality(item, 1)
-          }
-
-        }
-
-        if (item.sellIn < 0) {
-
-          if (!isAgedBrie(item)) {
-            if (!isBackstage(item)) {
-              if (item.quality > 0) {
-
-                decreaseItemQuality(item, 1)
-
-              }
-            }
-
-            else {
-              item.quality = item.quality - item.quality
-            }
-          }
-
-          else {
-            if (item.quality < 50) {
-              increaseItemQuality(item, 1)
-            }
-          }
+          updateRegularObjectQuality(item)
         }
       }
     }
