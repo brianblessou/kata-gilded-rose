@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 import unittest
 
-from src.gilded_rose import Item, GildedRose, AGED_BRIE, BACKSTAGE, SULFURAS
+from src.gilded_rose import  GildedRose, AGED_BRIE, BACKSTAGE, SULFURAS
+from src.item import Item
 
 test_cases_one_day = [
     ("+5 Dexterity Vest", 10, 20, 9, 19),
@@ -78,17 +79,14 @@ test_cases_clean_quality=[
     ("Elixir of the Mongoose", 5, 49,  -5, 49),
 ]
 
-class ItemRose(Item):
-    def __eq__(self, obj):
-        return isinstance(obj, ItemRose) and obj.sell_in == self.sell_in  and obj.name == self.name  and obj.quality == self.quality
 
 def update_item(test_cases,nb_update):
     items = []
     items_update = []
     for case in test_cases:
         (name, sell_in, quality, sell_in_update, quality_update) = case
-        item = ItemRose(name=name, sell_in=sell_in, quality=quality)
-        item_update = ItemRose(name=name, sell_in=sell_in_update, quality=quality_update)
+        item = Item(name=name, sell_in=sell_in, quality=quality)
+        item_update = Item(name=name, sell_in=sell_in_update, quality=quality_update)
         items.append(item)
         items_update.append(item_update)
         
@@ -104,8 +102,8 @@ def improve_quality_item(test_cases):
     for case in test_cases:
         (name, sell_in, quality, sell_in_update, quality_update) = case
         
-        item = ItemRose(name=name, sell_in=sell_in, quality=quality)
-        item_update = ItemRose(name=name, sell_in=sell_in_update, quality=quality_update)
+        item = Item(name=name, sell_in=sell_in, quality=quality)
+        item_update = Item(name=name, sell_in=sell_in_update, quality=quality_update)
         
         item.sell_in = item.sell_in - 1
         gilded_rose._improve_quality(item)
@@ -149,8 +147,8 @@ class GildedRoseTest(unittest.TestCase):
         gilded_rose = GildedRose([])
         for case in test_cases_clean_quality:
             (name, sell_in, quality, sell_in_update, quality_update) = case
-            item = ItemRose(name=name, sell_in=sell_in, quality=quality)
-            item_update = ItemRose(name=name, sell_in=sell_in_update, quality=quality_update)
+            item = Item(name=name, sell_in=sell_in, quality=quality)
+            item_update = Item(name=name, sell_in=sell_in_update, quality=quality_update)
             gilded_rose._clean_quality(item)
             self.assertEqual(item.quality, item_update.quality)
                     
