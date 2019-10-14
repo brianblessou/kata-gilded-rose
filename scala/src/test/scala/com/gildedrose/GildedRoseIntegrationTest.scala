@@ -1,6 +1,6 @@
 package com.gildedrose
 
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.{FlatSpec, FunSuite, Matchers}
 
 class GildedRoseIntegrationTest  extends FlatSpec with Matchers {
   val items = Array[Item](
@@ -16,7 +16,7 @@ class GildedRoseIntegrationTest  extends FlatSpec with Matchers {
       new Item("+5 Dexterity Vest", 14, 19),
       new Item("Aged Brie", 14, 21),
       new Item("Sulfuras, Hand of Ragnaros", 15, 20),
-      new Item("Backstage passes to a TAFKAL80ETC concert", 14 , 21)
+      new Item("Backstage passes to a TAFKAL80ETC concert", 14, 21)
     )
     val app = new GildedRose(items)
     app.updateQuality()
@@ -28,10 +28,10 @@ class GildedRoseIntegrationTest  extends FlatSpec with Matchers {
       new Item("+5 Dexterity Vest", 10, 15),
       new Item("Aged Brie", 10, 25),
       new Item("Sulfuras, Hand of Ragnaros", 15, 20),
-      new Item("Backstage passes to a TAFKAL80ETC concert", 10 , 25)
+      new Item("Backstage passes to a TAFKAL80ETC concert", 10, 25)
     )
     val app = new GildedRose(items)
-    for(i <- 2 to 5){
+    for (i <- 2 to 5) {
       app.updateQuality()
     }
 
@@ -42,10 +42,10 @@ class GildedRoseIntegrationTest  extends FlatSpec with Matchers {
       new Item("+5 Dexterity Vest", 5, 10),
       new Item("Aged Brie", 5, 30),
       new Item("Sulfuras, Hand of Ragnaros", 15, 20),
-      new Item("Backstage passes to a TAFKAL80ETC concert", 5 , 35)
+      new Item("Backstage passes to a TAFKAL80ETC concert", 5, 35)
     )
     val app = new GildedRose(items)
-    for(i <- 6 to 10){
+    for (i <- 6 to 10) {
       app.updateQuality()
     }
     app.items.toSeq should equal(itemsExpected.toSeq)
@@ -55,10 +55,10 @@ class GildedRoseIntegrationTest  extends FlatSpec with Matchers {
       new Item("+5 Dexterity Vest", 0, 5),
       new Item("Aged Brie", 0, 35),
       new Item("Sulfuras, Hand of Ragnaros", 15, 20),
-      new Item("Backstage passes to a TAFKAL80ETC concert", 0 , 50)
+      new Item("Backstage passes to a TAFKAL80ETC concert", 0, 50)
     )
     val app = new GildedRose(items)
-    for(i <- 11 to 15){
+    for (i <- 11 to 15) {
       app.updateQuality()
     }
     app.items.toSeq should equal(itemsExpected.toSeq)
@@ -66,14 +66,25 @@ class GildedRoseIntegrationTest  extends FlatSpec with Matchers {
   it should "day20" in {
     val itemsExpected = Array[Item](
       new Item("+5 Dexterity Vest", -5, 0),
-      new Item("Aged Brie", -5, 40),
+      new Item("Aged Brie", -5, 45),
       new Item("Sulfuras, Hand of Ragnaros", 15, 20),
-      new Item("Backstage passes to a TAFKAL80ETC concert", -5 , 0)
+      new Item("Backstage passes to a TAFKAL80ETC concert", -5, 0)
     )
     val app = new GildedRose(items)
-    for(i <- 16 to 20){
+    for (i <- 16 to 20) {
       app.updateQuality()
     }
     app.items.toSeq should equal(itemsExpected.toSeq)
   }
+  it should "conjured" in {
+    var item = new Item("Conjured", 10, 10)
+    var itemExpected = new Item("Conjured", 5, 0)
+    for(i <- 1 to 5){
+      Conjured(item).update()
+    }
+    item should equal(itemExpected)
+}
+
+
+
 }

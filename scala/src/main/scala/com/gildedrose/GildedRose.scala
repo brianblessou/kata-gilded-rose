@@ -1,70 +1,24 @@
 package com.gildedrose
 
 class GildedRose(val items: Array[Item]) {
-  val MAX_QUALITY = 50
-  val MIN_QUALITY = 0
-
-  /**
-   * Function that allows you to "add" the given value to the quality value of the item
-   * @param item The item from which we need to modify the quality value.
-   * @param nb The value that we have to add (or remove if is (-)) to quality
-   */
-  def setQualityItem(item : Item, nb : Int) {
-    if( item.quality + nb <= MAX_QUALITY && item.quality + nb >= MIN_QUALITY ) {
-      item.quality += nb
-    }
-  }
-
   /**
    * Function that contains the business logic. It set the quality of the given Item depending of the name
    * @param item The item from which we have to set the quality
    */
-  def setQuality(item : Item){
+  def update(item : Item){
     item.name match {
-      case "Aged Brie" => setQualityItem(item, 1)
-      case "Sulfuras, Hand of Ragnaros" => setQualityItem(item, 0)
-      case "Backstage passes to a TAFKAL80ETC concert" => (
-        if(item.sellIn > 10) setQualityItem(item, 1)
-        else if (item.sellIn > 5) setQualityItem(item, 2)
-        else if (item.sellIn > 0) setQualityItem(item, 3)
-        else if (item.sellIn <= 0) item.quality = 0
-      )
-      case _ => (
-        if(item.sellIn >= 0) setQualityItem(item, -1)
-        else setQualityItem(item, -2)
-        )
+      case "Aged Brie" => AgedBrie(item).update()
+      case "Sulfuras, Hand of Ragnaros" => () //Do nothing
+      case "Backstage passes to a TAFKAL80ETC concert" => BackstageConcert(item).update()
+      case "Conjured" => Conjured(item).update()
+      case _ => Entity(item).update()
     }
   }
-
-
-  /**
-   *
-   * @param item
-   */
-  def setSellInItem(item : Item){
-    item.sellIn -= 1
-  }
-
-  /**
-   *
-   * @param item
-   */
-  def setSellIn(item : Item){
-    val name : String = item.name
-    name match{
-      case "Sulfuras, Hand of Ragnaros" => ()
-      case _ => setSellInItem(item)
-    }
-  }
-
   /**
    * Function that will update the quality of all the items.
    */
   def updateQuality(){
-    for(item <- items){
-      setQuality(item)
-      setSellIn(item)
-    }
+    items.foreach(item => update(item))
   }
   /*def updateQuality() {
     for (item <- items) {
