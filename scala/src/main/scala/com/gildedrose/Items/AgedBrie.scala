@@ -1,10 +1,12 @@
-package com.gildedrose
+package com.gildedrose.Items
+
+import com.gildedrose.Traits.UpdateQuality
 
 case class AgedBrie(item: Item)
-extends Item(item.name,item.sellIn,item.quality) with UpdateQuality{
+extends AbstractItem(item) with UpdateQuality{
 
 
-  def updateQuality(item: Item): Unit ={
+  def updateQuality(): Unit ={
 
     decreaseSellIn(item)
     if (item.quality < 50) {

@@ -1,8 +1,8 @@
 package com.gildedrose
 
+import com.gildedrose.Items.{AgedBrie, Item}
 import com.sun.tools.javac.jvm.Items
 import org.junit.Assert._
-
 import org.junit.Test
 
 
@@ -49,6 +49,7 @@ class GildedRoseTest  {
       new Item("Conjured Mana Cake", 2, 4)
 
     )
+
     app.updateQuality()
 
     assertEquals(expectedItems.toList, app.items.toList)
@@ -335,28 +336,18 @@ class GildedRoseTest  {
   }
 
   @Test
-  def testIncreaseQuality(): Unit ={
+  def testUpdateQualityBrie(): Unit ={
 
-    println(items(0).quality)
+    println(items(1).quality)
 
-    app.increaseItemQuality(items(0),2)
+   AgedBrie(items(1)).updateQuality()
 
-    assertTrue(items(0).quality  == 22)
+    assertTrue(items(1).quality  == 1)
 
-    println(items(0).quality)
+    println(items(1).quality)
   }
 
-  @Test
-  def testDecreaseQuality(): Unit ={
 
-    println(items(0).quality)
-
-    app.decreaseItemQuality(items(0),2)
-
-    assertTrue(items(0).quality  == 18)
-
-    println(items(0).quality)
-  }
 
 
 
