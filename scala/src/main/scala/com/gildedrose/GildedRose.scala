@@ -60,6 +60,10 @@ class GildedRose(val items: Array[Item]) {
     }
   }
 
+  /**
+   *
+   * @param item
+   */
   def updateElixir(item: Item): Unit = {
     item.sellIn = decreaseSellIn(item.sellIn, 1)
     if (item.sellIn < 0) {
@@ -67,6 +71,50 @@ class GildedRose(val items: Array[Item]) {
     }
     else {
       item.quality = decreaseQuality(item.quality, 1)
+    }
+  }
+
+  /**
+   *
+   * @param item
+   */
+  def updateMana(item: Item): Unit = {
+    item.sellIn = decreaseSellIn(item.sellIn, 1)
+    if (item.sellIn < 0) {
+      item.quality = decreaseQuality(item.quality, 3)
+    }
+    else {
+      item.quality = decreaseQuality(item.quality, 1)
+    }
+  }
+
+  /**
+   *
+   * @param item
+   */
+  def updateBrie(item: Item): Unit = {
+    item.sellIn = decreaseSellIn(item.sellIn, 1)
+    item.quality = increaseQuality(item.quality, 1)
+    if (item.sellIn < 0) {
+      item.quality = increaseQuality(item.quality, 1)
+    }
+  }
+
+  /**
+   *
+   * @param item
+   */
+  def updateBackstage(item: Item): Unit = {
+    item.sellIn = decreaseSellIn(item.sellIn, 1)
+    item.quality = increaseQuality(item.quality, 1)
+    if (item.sellIn >= 5 && item.sellIn < 10) {
+      item.quality = increaseQuality(item.quality, 1)
+    }
+    else if (item.sellIn >= 0 && item.sellIn < 5) {
+      item.quality = increaseQuality(item.quality, 2)
+    }
+    else if (item.sellIn < 0) {
+      item.quality = 0
     }
   }
 
@@ -91,37 +139,17 @@ class GildedRose(val items: Array[Item]) {
       }
 
       else if (item.name.equals("Conjured Mana Cake")) {
-        item.sellIn = decreaseSellIn(item.sellIn, 1)
-        if (item.sellIn < 0) {
-          item.quality = decreaseQuality(item.quality, 3)
-        }
-        else {
-          item.quality = decreaseQuality(item.quality, 1)
-        }
+        updateMana(item)
       }
 
       else if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-        item.sellIn = decreaseSellIn(item.sellIn, 1)
-        item.quality = increaseQuality(item.quality, 1)
-        if (item.sellIn >= 5 && item.sellIn < 10) {
-          item.quality = increaseQuality(item.quality, 1)
-        }
-        else if (item.sellIn >= 0 && item.sellIn < 5) {
-          item.quality = increaseQuality(item.quality, 2)
-        }
-        else if (item.sellIn < 0) {
-          item.quality = 0
-        }
+        updateBackstage(item)
       }
 
       else if (item.name.equals("Aged Brie")) {
-        item.sellIn = decreaseSellIn(item.sellIn, 1)
-        item.quality = increaseQuality(item.quality, 1)
-        if (item.sellIn < 0) {
-          item.quality = increaseQuality(item.quality, 1)
-        }
+        updateBrie(item)
       }
-      
+
     }
   }
 }
