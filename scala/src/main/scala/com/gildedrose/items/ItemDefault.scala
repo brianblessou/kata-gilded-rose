@@ -2,8 +2,7 @@ package com.gildedrose.items
 
 import com.gildedrose.interfaces.ItemInterface
 
-case class ItemDexterity(item: Item) extends ItemInterface(item) {
-
+case class ItemDefault(item: Item) extends ItemInterface(item){
 
   /**
    *

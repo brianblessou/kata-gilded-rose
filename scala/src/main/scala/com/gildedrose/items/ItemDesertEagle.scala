@@ -15,12 +15,7 @@ case class ItemDesertEagle(item: Item) extends ItemInterface(item)  {
    *
    */
   def updateQuality(): Unit = {
-    if (item.sellIn < 0) {
-      decreaseQuality(2)
-    }
-    else {
-      decreaseQuality(2)
-    }
+    decreaseQuality(2)
   }
 
   /**
