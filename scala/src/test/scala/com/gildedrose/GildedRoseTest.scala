@@ -25,9 +25,9 @@ class GildedRoseTest  {
     new Item("Sulfuras, Hand of Ragnaros", -1, 80),
     new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20),
     new Item("Backstage passes to a TAFKAL80ETC concert", 10, 49),
-    new Item("Backstage passes to a TAFKAL80ETC concert", 5, 49)
+    new Item("Backstage passes to a TAFKAL80ETC concert", 5, 49),
     // this conjured item does not work properly yet
-    //new Item("Conjured Mana Cake", 3, 6)
+    new Item("Conjured Mana Cake", 3, 6)
 
   )
   val app = new GildedRose(items)
@@ -44,9 +44,9 @@ class GildedRoseTest  {
       new Item("Sulfuras, Hand of Ragnaros", -1, 80),
       new Item("Backstage passes to a TAFKAL80ETC concert", 14, 21),
       new Item("Backstage passes to a TAFKAL80ETC concert", 9, 50),
-      new Item("Backstage passes to a TAFKAL80ETC concert", 4, 50)
+      new Item("Backstage passes to a TAFKAL80ETC concert", 4, 50),
       // this conjured item does not work properly yet
-     // new Item("Conjured Mana Cake", 2, 5)
+      new Item("Conjured Mana Cake", 2, 4)
 
     )
     app.updateQuality()
@@ -70,9 +70,9 @@ class GildedRoseTest  {
       new Item("Sulfuras, Hand of Ragnaros", -1, 80),
       new Item("Backstage passes to a TAFKAL80ETC concert", 13, 22),
       new Item("Backstage passes to a TAFKAL80ETC concert", 8, 50),
-      new Item("Backstage passes to a TAFKAL80ETC concert", 3, 50)
+      new Item("Backstage passes to a TAFKAL80ETC concert", 3, 50),
       // this conjured item does not work properly yet
-      // new Item("Conjured Mana Cake", 2, 5)
+       new Item("Conjured Mana Cake", 1, 2)
 
     )
     for (i <- 0 until 2)
@@ -95,9 +95,9 @@ class GildedRoseTest  {
       new Item("Sulfuras, Hand of Ragnaros", -1, 80),
       new Item("Backstage passes to a TAFKAL80ETC concert", 12, 23),
       new Item("Backstage passes to a TAFKAL80ETC concert", 7, 50),
-      new Item("Backstage passes to a TAFKAL80ETC concert", 2, 50)
+      new Item("Backstage passes to a TAFKAL80ETC concert", 2, 50),
       // this conjured item does not work properly yet
-      // new Item("Conjured Mana Cake", 2, 5)
+       new Item("Conjured Mana Cake", 0, 0)
 
     )
 
@@ -123,7 +123,8 @@ class GildedRoseTest  {
       new Item("Sulfuras, Hand of Ragnaros", -1, 80),
       new Item("Backstage passes to a TAFKAL80ETC concert", 11, 24),
       new Item("Backstage passes to a TAFKAL80ETC concert", 6, 50),
-      new Item("Backstage passes to a TAFKAL80ETC concert", 1, 50)
+      new Item("Backstage passes to a TAFKAL80ETC concert", 1, 50),
+      new Item("Conjured Mana Cake", -1, 0)
       // this conjured item does not work properly yet
       // new Item("Conjured Mana Cake", 2, 5)
 
@@ -151,7 +152,8 @@ class GildedRoseTest  {
       new Item("Sulfuras, Hand of Ragnaros", -1, 80),
       new Item("Backstage passes to a TAFKAL80ETC concert", 10, 25),
       new Item("Backstage passes to a TAFKAL80ETC concert", 5, 50),
-      new Item("Backstage passes to a TAFKAL80ETC concert", 0, 50)
+      new Item("Backstage passes to a TAFKAL80ETC concert", 0, 50),
+      new Item("Conjured Mana Cake", -2, 0)
       // this conjured item does not work properly yet
       // new Item("Conjured Mana Cake", 2, 5)
 
@@ -179,7 +181,8 @@ class GildedRoseTest  {
       new Item("Sulfuras, Hand of Ragnaros", -1, 80),
       new Item("Backstage passes to a TAFKAL80ETC concert", 9, 27),
       new Item("Backstage passes to a TAFKAL80ETC concert", 4, 50),
-      new Item("Backstage passes to a TAFKAL80ETC concert", -1, 0)
+      new Item("Backstage passes to a TAFKAL80ETC concert", -1, 0),
+      new Item("Conjured Mana Cake", -3, 0)
       // this conjured item does not work properly yet
       // new Item("Conjured Mana Cake", 2, 5)
 
@@ -207,7 +210,8 @@ class GildedRoseTest  {
       new Item("Sulfuras, Hand of Ragnaros", -1, 80),
       new Item("Backstage passes to a TAFKAL80ETC concert", 8, 29),
       new Item("Backstage passes to a TAFKAL80ETC concert", 3, 50),
-      new Item("Backstage passes to a TAFKAL80ETC concert", -2, 0)
+      new Item("Backstage passes to a TAFKAL80ETC concert", -2, 0),
+      new Item("Conjured Mana Cake", -4, 0)
       // this conjured item does not work properly yet
       // new Item("Conjured Mana Cake", 2, 5)
 
@@ -235,9 +239,9 @@ class GildedRoseTest  {
       new Item("Sulfuras, Hand of Ragnaros", -1, 80),
       new Item("Backstage passes to a TAFKAL80ETC concert", 7, 31),
       new Item("Backstage passes to a TAFKAL80ETC concert", 2, 50),
-      new Item("Backstage passes to a TAFKAL80ETC concert", -3, 0)
+      new Item("Backstage passes to a TAFKAL80ETC concert", -3, 0),
       // this conjured item does not work properly yet
-      // new Item("Conjured Mana Cake", 2, 5)
+      new Item("Conjured Mana Cake", -5, 0)
 
     )
 
@@ -263,7 +267,8 @@ class GildedRoseTest  {
       new Item("Sulfuras, Hand of Ragnaros", -1, 80),
       new Item("Backstage passes to a TAFKAL80ETC concert", 6, 33),
       new Item("Backstage passes to a TAFKAL80ETC concert", 1, 50),
-      new Item("Backstage passes to a TAFKAL80ETC concert", -4, 0)
+      new Item("Backstage passes to a TAFKAL80ETC concert", -4, 0),
+      new Item("Conjured Mana Cake", -6, 0)
       // this conjured item does not work properly yet
       // new Item("Conjured Mana Cake", 2, 5)
 
@@ -291,7 +296,8 @@ class GildedRoseTest  {
       new Item("Sulfuras, Hand of Ragnaros", -1, 80),
       new Item("Backstage passes to a TAFKAL80ETC concert", 5, 35),
       new Item("Backstage passes to a TAFKAL80ETC concert", 0, 50),
-      new Item("Backstage passes to a TAFKAL80ETC concert", -5, 0)
+      new Item("Backstage passes to a TAFKAL80ETC concert", -5, 0),
+      new Item("Conjured Mana Cake", -7, 0)
       // this conjured item does not work properly yet
       // new Item("Conjured Mana Cake", 2, 5)
 

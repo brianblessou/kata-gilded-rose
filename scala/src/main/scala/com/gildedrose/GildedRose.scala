@@ -33,6 +33,11 @@ class GildedRose(val items: Array[Item]) {
     item.name == "Sulfuras, Hand of Ragnaros"
   }
 
+  def isConjured (item: Item): Boolean = {
+
+    item.name == "Conjured Mana Cake"
+  }
+
   def updateBrieQuality(item: Item): Unit ={
 
     item.sellIn = item.sellIn - 1
@@ -72,10 +77,18 @@ class GildedRose(val items: Array[Item]) {
     }
   }
 
+  def updateConjuredObjectQuality(item: Item): Unit ={
+    item.sellIn = item.sellIn - 1
+    if (item.quality > 0) {
+      decreaseItemQuality(item, 2)
+      if (item.sellIn < 0) {
+        decreaseItemQuality(item, 2)
+      }
+    }
+  }
+
   def updateQuality() {
     items.foreach { item =>
-
-
       if (isLegendary(item)) {
         print(" ")
       }
@@ -86,7 +99,10 @@ class GildedRose(val items: Array[Item]) {
         else if (isAgedBrie(item)) {
           updateBrieQuality(item)
         }
-        else {
+          else if (isConjured(item)){
+          updateConjuredObjectQuality(item)
+        }
+          else {
           updateRegularObjectQuality(item)
         }
       }
