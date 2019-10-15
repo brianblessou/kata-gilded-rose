@@ -4,11 +4,23 @@ import com.gildedrose.items.Item
 
 abstract class ItemInterface(item: Item) {
 
+  /**
+   *
+   */
+  def updateSellIn()
 
   /**
    *
    */
-  def update()
+  def updateQuality()
+
+  /**
+   *
+   */
+  def update() : Unit = {
+    updateSellIn()
+    updateQuality()
+  }
 
 
   /**

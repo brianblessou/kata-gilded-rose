@@ -7,5 +7,18 @@ case class ItemSulfuras(item: Item) extends ItemInterface(item) {
   /**
    *
    */
-  def update(): Unit = {}
+  def updateSellIn(): Unit= {}
+
+  /**
+   *
+   */
+  def updateQuality(): Unit= {}
+
+  /**
+   *
+   */
+  override def update(): Unit = {
+    super.update()
+  }
+  
 }

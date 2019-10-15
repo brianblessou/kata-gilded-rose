@@ -7,8 +7,14 @@ case class ItemElixir(item: Item) extends ItemInterface(item)  {
   /**
    *
    */
-  def update(): Unit = {
+  def updateSellIn() : Unit = {
     decreaseSellIn(1)
+  }
+
+  /**
+   *
+   */
+  def updateQuality(): Unit = {
     if (item.sellIn < 0) {
       decreaseQuality(2)
     }
@@ -16,4 +22,12 @@ case class ItemElixir(item: Item) extends ItemInterface(item)  {
       decreaseQuality(1)
     }
   }
+
+  /**
+   *
+   */
+  override def update(): Unit = {
+    super.update()
+  }
+
 }

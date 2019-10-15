@@ -4,12 +4,17 @@ import com.gildedrose.interfaces.ItemInterface
 
 case class ItemBackstage(item: Item) extends ItemInterface(item) {
 
+  /**
+   *
+   */
+  def updateSellIn(): Unit = {
+    decreaseSellIn(1)
+  }
 
   /**
    *
    */
-  def update(): Unit = {
-    decreaseSellIn(1)
+  def updateQuality(): Unit = {
     increaseQuality(1)
     if (item.sellIn >= 5 && item.sellIn < 10) {
       increaseQuality(1)
@@ -21,5 +26,13 @@ case class ItemBackstage(item: Item) extends ItemInterface(item) {
       item.quality = 0
     }
   }
+
+  /**
+   *
+   */
+  override def update(): Unit = {
+    super.update()
+  }
+
 
 }
