@@ -1,6 +1,6 @@
 package com.gildedrose
 
-case class Entity(item: Item) extends Factory {
+case class DefaultItem(item: Item) extends Factory {
   /**
    * Set the quality value for the default type of items
    */
