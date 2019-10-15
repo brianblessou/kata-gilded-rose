@@ -2,27 +2,8 @@ package com.gildedrose.items
 
 import com.gildedrose.Item
 
-case class ItemDexterity(item: Item) {
+case class ItemDexterity(item: Item) extends ItemInterface(item) {
 
-  /**
-   *
-   * @param quality
-   * @return
-   */
-  def decreaseQuality(times: Int): Unit = {
-    if (item.quality > 0) {
-      item.quality -=  times
-    }
-  }
-
-  /**
-   *
-   * @param sellIn
-   * @return
-   */
-  def decreaseSellIn(times: Int): Unit = {
-    item.sellIn -= times
-  }
 
   /**
    *

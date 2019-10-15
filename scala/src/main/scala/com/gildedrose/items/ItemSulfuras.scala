@@ -1,9 +1,8 @@
 package com.gildedrose.items
 
-case class ItemSulfuras (var name: String, var quality: Int, var sellIn : Int) extends ItemInterface {
+import com.gildedrose.Item
 
-
-  name = "Sulfuras, Hand of Ragnaros"
+case class ItemSulfuras(item: Item) extends ItemInterface(item) {
 
   /**
    *

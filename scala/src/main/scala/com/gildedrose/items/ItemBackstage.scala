@@ -1,24 +1,24 @@
 package com.gildedrose.items
 
-case class ItemBackstage(var name: String, var quality: Int, var sellIn : Int) extends ItemInterface {
+import com.gildedrose.Item
 
+case class ItemBackstage(item: Item) extends ItemInterface(item) {
 
-  name = "Backstage passes to a TAFKAL80ETC concert"
 
   /**
    *
    */
   def update(): Unit = {
-    sellIn = decreaseSellIn(sellIn, 1)
-    quality = increaseQuality(quality, 1)
-    if (sellIn >= 5 && sellIn < 10) {
-      quality = increaseQuality(quality, 1)
+    decreaseSellIn(1)
+    increaseQuality(1)
+    if (item.sellIn >= 5 && item.sellIn < 10) {
+      increaseQuality(1)
     }
-    else if (sellIn >= 0 && sellIn < 5) {
-      quality = increaseQuality(quality, 2)
+    else if (item.sellIn >= 0 && item.sellIn < 5) {
+      increaseQuality(2)
     }
-    else if (sellIn < 0) {
-      quality = 0
+    else if (item.sellIn < 0) {
+      item.quality = 0
     }
   }
 

@@ -1,20 +1,19 @@
 package com.gildedrose.items
 
-case class ItemElixir(var name: String, var quality: Int, var sellIn : Int) extends ItemInterface  {
+import com.gildedrose.Item
 
-
-  name = "Elixir of the Mongoose"
+case class ItemElixir(item: Item) extends ItemInterface(item)  {
 
   /**
    *
    */
   def update(): Unit = {
-    sellIn = decreaseSellIn(sellIn, 1)
-    if (sellIn < 0) {
-      quality = decreaseQuality(quality, 2)
+    decreaseSellIn(1)
+    if (item.sellIn < 0) {
+      decreaseQuality(2)
     }
     else {
-      quality = decreaseQuality(quality, 1)
+      decreaseQuality(1)
     }
   }
 }

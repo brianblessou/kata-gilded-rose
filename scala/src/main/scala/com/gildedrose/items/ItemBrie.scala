@@ -1,18 +1,18 @@
 package com.gildedrose.items
 
-case class ItemBrie(var name: String, var quality: Int, var sellIn : Int) extends ItemInterface  {
+import com.gildedrose.Item
 
+case class ItemBrie(item: Item) extends ItemInterface(item)  {
 
-  name = "Aged Brie"
 
   /**
    *
    */
   def update(): Unit = {
-    sellIn = decreaseSellIn(sellIn, 1)
-    quality = increaseQuality(quality, 1)
-    if (sellIn < 0) {
-      quality = increaseQuality(quality, 1)
+    decreaseSellIn(1)
+    increaseQuality(1)
+    if (item.sellIn < 0) {
+      increaseQuality(1)
     }
   }
 
