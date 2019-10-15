@@ -1,6 +1,6 @@
 package com.gildedrose
 
-trait Factory {
+trait CommonFunction {
   private val MAX_QUALITY = 50
   private val MIN_QUALITY = 0
 

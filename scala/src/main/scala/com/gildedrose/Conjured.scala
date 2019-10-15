@@ -1,6 +1,6 @@
 package com.gildedrose
 
-case class Conjured(item: Item) extends Factory {
+case class Conjured(item: Item) extends CommonFunction {
   private val QUALITY_DELTA : Int = -2
   def update(){
     if(item.sellIn >= 0) setQualityItem(item, QUALITY_DELTA)
