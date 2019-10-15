@@ -3,7 +3,7 @@ package com.gildedrose.Items
 import com.gildedrose.Traits.UpdateQuality
 
 case class RegularItem(item: Item)
-  extends AbstractItem(item) with UpdateQuality{
+  extends UpdateQuality{
 
 
   def updateQuality(): Unit ={

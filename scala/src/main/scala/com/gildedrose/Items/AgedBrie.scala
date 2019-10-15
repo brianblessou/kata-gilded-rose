@@ -2,8 +2,7 @@ package com.gildedrose.Items
 
 import com.gildedrose.Traits.UpdateQuality
 
-case class AgedBrie(item: Item)
-extends AbstractItem(item) with UpdateQuality{
+case class AgedBrie(item: Item) extends UpdateQuality{
 
 
   def updateQuality(): Unit ={

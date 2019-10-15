@@ -313,27 +313,8 @@ class GildedRoseTest  {
     assertEquals(expectedItems.toList, app.items.toList)
 
   }
-  @Test
-  def testIsAgedBrie(): Unit ={
 
-    assertTrue(app.isAgedBrie(items(1)))
-  }
 
-  @Test
-  def testIsLegendary(): Unit ={
-
-    assertTrue(app.isLegendary(items(3)))
-    assertTrue(app.isLegendary(items(4)))
-  }
-
-  @Test
-  def testIsBackstage(): Unit ={
-
-    assertTrue(app.isBackstage(items(5)))
-    assertTrue(app.isBackstage(items(6)))
-    assertTrue(app.isBackstage(items(7)))
-
-  }
 
   @Test
   def testUpdateQualityBrie(): Unit ={
