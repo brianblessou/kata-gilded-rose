@@ -19,6 +19,7 @@ object ItemFactory {
         case "Conjured Mana Cake" => ItemMana(item)
         case "Backstage passes to a TAFKAL80ETC concert" => ItemBackstage(item)
         case "Aged Brie" => ItemBrie(item)
+        case "Desert Eagle" => ItemDesertEagle(item)
     }
   }
 

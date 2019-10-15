@@ -17,7 +17,8 @@ class GildedRoseTest {
     new Item("Backstage passes to a TAFKAL80ETC concert", 10, 49),
     new Item("Backstage passes to a TAFKAL80ETC concert", 5, 49),
     // this conjured item does not work properly yet
-    new Item("Conjured Mana Cake", 3, 6)
+    new Item("Conjured Mana Cake", 3, 6),
+    new Item("Desert Eagle", 40, 100)
   )
 
   val app = new GildedRose(items)
@@ -33,7 +34,8 @@ class GildedRoseTest {
       new Item("Backstage passes to a TAFKAL80ETC concert",14,21),
       new Item("Backstage passes to a TAFKAL80ETC concert",9,50),
       new Item("Backstage passes to a TAFKAL80ETC concert",4,50),
-      new Item("Conjured Mana Cake",2,5)
+      new Item("Conjured Mana Cake",2,5),
+      new Item("Desert Eagle",39,98)
     )
     app.updateQuality()
     assertEquals(itemsExpected.toList, app.items.toList)
@@ -50,7 +52,8 @@ class GildedRoseTest {
       new Item("Backstage passes to a TAFKAL80ETC concert",13,22),
       new Item("Backstage passes to a TAFKAL80ETC concert",8,50),
       new Item("Backstage passes to a TAFKAL80ETC concert",3,50),
-      new Item("Conjured Mana Cake",1,4)
+      new Item("Conjured Mana Cake",1,4),
+      new Item("Desert Eagle",38,96)
     )
     for (i <- 1 to 2) {
       app.updateQuality()
@@ -69,7 +72,8 @@ class GildedRoseTest {
       new Item("Backstage passes to a TAFKAL80ETC concert",12,23),
       new Item("Backstage passes to a TAFKAL80ETC concert",7,50),
       new Item("Backstage passes to a TAFKAL80ETC concert",2,50),
-      new Item("Conjured Mana Cake",0,3)
+      new Item("Conjured Mana Cake",0,3),
+      new Item("Desert Eagle",37,94)
     )
     for (i <- 1 to 3) {
       app.updateQuality()
@@ -88,7 +92,8 @@ class GildedRoseTest {
       new Item("Backstage passes to a TAFKAL80ETC concert",4,38),
       new Item("Backstage passes to a TAFKAL80ETC concert",-1,0),
       new Item("Backstage passes to a TAFKAL80ETC concert",-6,0),
-      new Item("Conjured Mana Cake",-8,0)
+      new Item("Conjured Mana Cake",-8,0),
+      new Item("Desert Eagle",29,78)
     )
     for (i <- 1 to 11) {
       app.updateQuality()

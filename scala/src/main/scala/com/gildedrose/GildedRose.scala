@@ -9,11 +9,7 @@ class GildedRose(val items: Array[Item]) {
    *
    */
   def updateQuality() {
-    for (item <- items) {
-      ItemFactory.itemManager(item).update()
-    }
-
-    //items.foreach(item => ItemFactory.itemManager(item).update())
+    items.foreach(item => ItemFactory.itemManager(item).update())
   }
 
 }
