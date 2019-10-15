@@ -1,18 +1,19 @@
-package com.gildedrose.items
+package com.gildedrose.interfaces
 
-import com.gildedrose.Item
+import com.gildedrose.items.Item
 
 abstract class ItemInterface(item: Item) {
+
 
   /**
    *
    */
   def update()
 
+
   /**
    *
-   * @param quality
-   * @return
+   * @param times
    */
   def decreaseQuality(times: Int): Unit = {
     if (item.quality > 0) {
@@ -20,10 +21,10 @@ abstract class ItemInterface(item: Item) {
     }
   }
 
+
   /**
    *
-   * @param sellIn
-   * @return
+   * @param times
    */
   def decreaseSellIn(times: Int): Unit = {
     item.sellIn -= times
@@ -32,8 +33,7 @@ abstract class ItemInterface(item: Item) {
 
   /**
    *
-   * @param quality
-   * @return
+   * @param times
    */
   def increaseQuality(times: Int): Unit = {
     if (item.quality < 50) {
@@ -41,13 +41,14 @@ abstract class ItemInterface(item: Item) {
     }
   }
 
+
   /**
    *
-   * @param sellIn
-   * @return
+   * @param times
    */
   def increaseSellIn(times: Int): Unit = {
     item.sellIn += times
   }
+
 
 }

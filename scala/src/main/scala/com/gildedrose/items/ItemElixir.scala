@@ -1,6 +1,6 @@
 package com.gildedrose.items
 
-import com.gildedrose.Item
+import com.gildedrose.interfaces.ItemInterface
 
 case class ItemElixir(item: Item) extends ItemInterface(item)  {
 

@@ -2,6 +2,7 @@ package com.gildedrose
 
 import org.junit.Assert.assertEquals
 import com.gildedrose
+import com.gildedrose.items.Item
 import org.junit.Test
 
 class GildedRoseTest {
@@ -94,6 +95,5 @@ class GildedRoseTest {
     }
     assertEquals(itemsExpected.toList, app.items.toList)
   }
-
 
 }
