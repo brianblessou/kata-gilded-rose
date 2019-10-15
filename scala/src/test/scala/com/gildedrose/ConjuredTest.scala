@@ -1,5 +1,6 @@
 package com.gildedrose
 
+import com.gildedrose.items.Conjured
 import org.scalatest.FunSuite
 
 class ConjuredTest extends FunSuite {

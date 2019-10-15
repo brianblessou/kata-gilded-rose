@@ -1,5 +1,6 @@
 package com.gildedrose
 
+import com.gildedrose.items.Conjured
 import org.scalatest.{FlatSpec, FunSuite, Matchers}
 
 class GildedRoseIntegrationTest  extends FlatSpec with Matchers {

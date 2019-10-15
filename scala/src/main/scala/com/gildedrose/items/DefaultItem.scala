@@ -1,4 +1,6 @@
-package com.gildedrose
+package com.gildedrose.items
+
+import com.gildedrose.{CommonFunction, Item}
 
 case class DefaultItem(item: Item) extends CommonFunction {
   /**

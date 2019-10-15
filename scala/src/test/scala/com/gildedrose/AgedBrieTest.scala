@@ -1,5 +1,6 @@
 package com.gildedrose
 
+import com.gildedrose.items.AgedBrie
 import org.scalatest.FunSuite
 
 class AgedBrieTest extends FunSuite {
@@ -13,7 +14,7 @@ class AgedBrieTest extends FunSuite {
   }
   test("testUpdate after 0"){
     for(i <- 1 to 3){
-      AgedBrie(agedBrie).update()
+      items.AgedBrie(agedBrie).update()
     }
     assert(agedBrie === agedBrieExpected2)
   }

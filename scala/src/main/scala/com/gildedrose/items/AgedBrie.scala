@@ -1,5 +1,6 @@
-package com.gildedrose
+package com.gildedrose.items
 
+import com.gildedrose.{CommonFunction, Item}
 
 case class AgedBrie(item: Item) extends CommonFunction {
     def update(){

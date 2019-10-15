@@ -1,5 +1,6 @@
 package com.gildedrose
 
+import com.gildedrose.items.BackstageConcert
 import org.scalatest.FunSuite
 
 class BackstageConcertTest extends FunSuite {
@@ -13,18 +14,18 @@ class BackstageConcertTest extends FunSuite {
     assert(concert === concertExpected1)
   }
   test("Update=10"){
-    BackstageConcert(concert).update()
+    items.BackstageConcert(concert).update()
     assert(concert === concertExpected2)
   }
   test("Update = 5"){
     for(i <- 1 to 8){
-      BackstageConcert(concert).update()
+      items.BackstageConcert(concert).update()
     }
     assert(concert === concertExpected10)
   }
   test("Update = < 0"){
-    BackstageConcert(concert).update()
-    BackstageConcert(concert).update()
+    items.BackstageConcert(concert).update()
+    items.BackstageConcert(concert).update()
     assert(concert === concertExpected0)
   }
 
