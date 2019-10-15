@@ -1,5 +1,7 @@
 package com.gildedrose
 
+import com.gildedrose.items.ItemDexterity
+
 import util.control.Breaks._
 
 class GildedRose(val items: Array[Item]) {
@@ -131,7 +133,7 @@ class GildedRose(val items: Array[Item]) {
       }
 
       else if (item.name.equals("+5 Dexterity Vest")) {
-        updateDexterity(item)
+        ItemDexterity(item).update()
       }
 
       else if (item.name.equals("Elixir of the Mongoose")) {
